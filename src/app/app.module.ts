@@ -8,6 +8,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { AppRoutingModule } from './app-routing.module';
+import { DialogModule } from 'primeng/dialog';
+import { InputTextareaModule } from 'primeng/inputtextarea';
 
 import { AppComponent } from './app.component';
 import { ApiService } from './services/api-service.service';
@@ -28,6 +30,8 @@ import { ProductCommentsViewComponent } from './components/product-comments-view
     TableModule,
     ButtonModule,
     AppRoutingModule,
+    DialogModule,
+    InputTextareaModule,
   ],
   providers: [ApiService],
   bootstrap: [AppComponent],

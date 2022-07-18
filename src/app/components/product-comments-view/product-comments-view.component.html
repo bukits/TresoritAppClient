@@ -1,1 +1,23 @@
-<button pButton label="Add comment" type="button" class="p-button-primary" icon="pi pi-plus" (click)="createComment()"></button>
+<h3 class="pt-2">Product of {{productName}} comments</h3>
+<div *ngFor="let comment of comments" class="card">
+  <div class="card-header">
+    userName
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{comment.comment}}</h5>
+    <p class="card-text">{{comment.timestamp | date: 'yyyy.MM.dd.'  }} </p>
+  </div>
+</div>
+
+<p-dialog header="Create comment to the product" [(visible)]="displayDialog" [modal]="true" [style]="{width: '50vw'}">
+    <span class="p-float-label">
+      <textarea [rows]="3" id="float-input" [cols]="40" pInputTextarea [(ngModel)]="newComment"></textarea>
+      <label for="float-input">Maximum 500 characters</label>
+    </span>
+  <ng-template pTemplate="footer">
+      <p-button icon="pi pi-check" (click)="createComment()" label="Create comment" styleClass="p-button-text"></p-button>
+  </ng-template>
+</p-dialog>
+<div class="d-flex justify-content-center pt-3">
+  <button pButton label="Add comment" type="button" class="p-button-primary" icon="pi pi-plus" (click)="showDialog()"></button>
+</div>

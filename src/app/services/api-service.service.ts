@@ -20,5 +20,9 @@ export class ApiService {
     );
   }
 
-  public createComment(product: string, comment: string) {}
+  public async createComment(comment: any) {
+    return await this.http
+      .post<any>(`${this.endpoint}/products`, comment)
+      .toPromise();
+  }
 }

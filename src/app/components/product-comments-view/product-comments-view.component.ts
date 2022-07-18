@@ -9,18 +9,37 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProductCommentsViewComponent implements OnInit {
   comments: any[];
+  displayDialog: boolean;
+  productName: string;
+  newComment: string;
 
   constructor(private apiSevice: ApiService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
-      this.apiSevice
-        .getCommentsByProductName(params['productName'])
-        .subscribe((data) => {
-          this.comments = data;
-        });
+      this.productName = params['productName'];
+      this.getComments();
     });
   }
 
-  public createComment() {}
+  private getComments() {
+    this.apiSevice
+      .getCommentsByProductName(this.productName)
+      .subscribe((data) => {
+        this.comments = data;
+      });
+  }
+
+  public createComment() {
+    this.displayDialog = false;
+    const commentEntity = {
+      productName: this.productName,
+      comment: this.newComment,
+    };
+    this.apiSevice.createComment(commentEntity).then(() => this.getComments());
+  }
+
+  public showDialog() {
+    this.displayDialog = true;
+  }
 }
