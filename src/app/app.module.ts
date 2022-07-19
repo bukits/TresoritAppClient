@@ -10,10 +10,12 @@ import { ButtonModule } from 'primeng/button';
 import { AppRoutingModule } from './app-routing.module';
 import { DialogModule } from 'primeng/dialog';
 import { InputTextareaModule } from 'primeng/inputtextarea';
+import { ToastModule } from 'primeng/toast';
 
 import { AppComponent } from './app.component';
 import { ApiService } from './services/api-service.service';
 import { ProductCommentsViewComponent } from './components/product-comments-view/product-comments-view.component';
+import { MessageService } from 'primeng/api';
 
 @NgModule({
   declarations: [
@@ -32,8 +34,9 @@ import { ProductCommentsViewComponent } from './components/product-comments-view
     AppRoutingModule,
     DialogModule,
     InputTextareaModule,
+    ToastModule,
   ],
-  providers: [ApiService],
+  providers: [ApiService, MessageService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
